@@ -1,16 +1,495 @@
 ### YamlMime:TSType
 name: HostObjectsSyncRoot
-uid: 'WebView2Script!HostObjectsSyncRoot:class'
-package: WebView2Script!
+uid: WebView2Script.HostObjectsSyncRoot
+package: WebView2Script
+summary: >
+  Contains synchronous proxies for all host objects added via
+  `CoreWebView2.AddHostObjectToScript`.
+
+  If you call `coreWebView2.AddHostObjectToScript("myObject", object);` in your
+  native code,
+
+  a synchronous proxy for `object` is available to your web-side code, by using
+  `chrome.webview.hostObjects.sync.myObject`.
 fullName: HostObjectsSyncRoot
-summary: >-
-  Contains synchronous proxies for all host objects added via `CoreWebView2.AddHostObjectToScript`<!-- -->.
-
-
-  If you call `coreWebView2.AddHostObjectToScript("myObject", object);` in your native code, a synchronous proxy for
-  `object` is available to your web-side code, by using `chrome.webview.hostObjects.sync.myObject`<!-- -->.
 remarks: ''
-isPreview: false
 isDeprecated: false
 type: class
-extends: '<xref uid="WebView2Script!HostObjectSyncProxy:class" />'
+inheritedProperties:
+  - name: arguments
+    uid: WebView2Script.HostObjectsSyncRoot.arguments
+    package: WebView2Script
+    summary: ''
+    fullName: arguments
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'arguments: any'
+      return:
+        description: ''
+        type: any
+    inheritanceDescription: <b>Inherited From</b> Function.arguments
+  - name: caller
+    uid: WebView2Script.HostObjectsSyncRoot.caller
+    package: WebView2Script
+    summary: ''
+    fullName: caller
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'caller: Function'
+      return:
+        description: ''
+        type: Function
+    inheritanceDescription: <b>Inherited From</b> Function.caller
+  - name: length
+    uid: WebView2Script.HostObjectsSyncRoot.length
+    package: WebView2Script
+    summary: ''
+    fullName: length
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'length: number'
+      return:
+        description: ''
+        type: number
+    inheritanceDescription: <b>Inherited From</b> Function.length
+  - name: prototype
+    uid: WebView2Script.HostObjectsSyncRoot.prototype
+    package: WebView2Script
+    summary: ''
+    fullName: prototype
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'prototype: any'
+      return:
+        description: ''
+        type: any
+    inheritanceDescription: <b>Inherited From</b> Function.prototype
+inheritedMethods:
+  - name: 'apply<T, A, R>((this: T, args: A) => R, T, A)'
+    uid: WebView2Script.HostObjectsSyncRoot.apply_1
+    package: WebView2Script
+    summary: ''
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: >-
+        function apply<T, A, R>(this: (this: T, args: A) => R, thisArg: T, args:
+        A): R
+      parameters:
+        - id: this
+          type: '(this: T, args: A) =&gt; R'
+          description: ''
+        - id: thisArg
+          type: T
+          description: ''
+        - id: args
+          type: A
+          description: ''
+      return:
+        description: ''
+        type: R
+    inheritanceDescription: <b>Inherited From</b> CallableFunction.apply
+  - name: 'apply<T, R>((this: T) => R, T)'
+    uid: WebView2Script.HostObjectsSyncRoot.apply
+    package: WebView2Script
+    summary: >-
+      Calls the function with the specified object as the this value and the
+      elements of specified array as the arguments.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'function apply<T, R>(this: (this: T) => R, thisArg: T): R'
+      parameters:
+        - id: this
+          type: '(this: T) =&gt; R'
+          description: ''
+        - id: thisArg
+          type: T
+          description: The object to be used as the this object.
+      return:
+        description: ''
+        type: R
+    inheritanceDescription: <b>Inherited From</b> CallableFunction.apply
+  - name: applyHostFunction(any)
+    uid: WebView2Script.HostObjectsSyncRoot.applyHostFunction
+    package: WebView2Script
+    summary: >
+      Perform a method invocation on the host object that corresponds to this
+      proxy.
+
+      All parameters are converted to call the host object method.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'function applyHostFunction(argArray?: any): any'
+      parameters:
+        - id: argArray
+          type: any
+          description: An array of arguments to pass to the host object method invocation.
+      return:
+        description: >-
+          The converted value of the return value of the host object method
+          invocation.
+        type: any
+    inheritanceDescription: >-
+      <b>Inherited From</b>
+      [HostObjectSyncProxy.applyHostFunction](xref:WebView2Script.HostObjectSyncProxy.applyHostFunction)
+  - name: async()
+    uid: WebView2Script.HostObjectsSyncRoot.async
+    package: WebView2Script
+    summary: >-
+      A method which blocks and returns an asynchronous host object proxy for
+      the same host object.
+
+      For example, `chrome.webview.hostObjects.sync.sample.methodCall()` returns
+      a synchronous host object proxy.
+
+      Running the `async` method on this blocks and then returns an asynchronous
+      host object proxy for the same
+
+      host object: `const asyncProxy =
+      chrome.webview.hostObjects.sync.sample.methodCall().async()`.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'function async(): HostObjectAsyncProxy'
+      return:
+        description: An asynchronous host object proxy for the same host object.
+        type: <xref uid="WebView2Script.HostObjectAsyncProxy" />
+    inheritanceDescription: >-
+      <b>Inherited From</b>
+      [HostObjectSyncProxy.async](xref:WebView2Script.HostObjectSyncProxy.async)
+  - name: 'bind<T, A0, A, R>((this: T, arg0: A0, args: A) => R, T, A0)'
+    uid: WebView2Script.HostObjectsSyncRoot.bind_1
+    package: WebView2Script
+    summary: ''
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: >-
+        function bind<T, A0, A, R>(this: (this: T, arg0: A0, args: A) => R,
+        thisArg: T, arg0: A0): (args: A) => R
+      parameters:
+        - id: this
+          type: '(this: T, arg0: A0, args: A) =&gt; R'
+          description: ''
+        - id: thisArg
+          type: T
+          description: ''
+        - id: arg0
+          type: A0
+          description: ''
+      return:
+        description: ''
+        type: '(args: A) =&gt; R'
+    inheritanceDescription: <b>Inherited From</b> CallableFunction.bind
+  - name: >-
+      bind<T, A0, A1, A, R>((this: T, arg0: A0, arg1: A1, args: A) => R, T, A0,
+      A1)
+    uid: WebView2Script.HostObjectsSyncRoot.bind_2
+    package: WebView2Script
+    summary: ''
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: >-
+        function bind<T, A0, A1, A, R>(this: (this: T, arg0: A0, arg1: A1, args:
+        A) => R, thisArg: T, arg0: A0, arg1: A1): (args: A) => R
+      parameters:
+        - id: this
+          type: '(this: T, arg0: A0, arg1: A1, args: A) =&gt; R'
+          description: ''
+        - id: thisArg
+          type: T
+          description: ''
+        - id: arg0
+          type: A0
+          description: ''
+        - id: arg1
+          type: A1
+          description: ''
+      return:
+        description: ''
+        type: '(args: A) =&gt; R'
+    inheritanceDescription: <b>Inherited From</b> CallableFunction.bind
+  - name: >-
+      bind<T, A0, A1, A2, A, R>((this: T, arg0: A0, arg1: A1, arg2: A2, args: A)
+      => R, T, A0, A1, A2)
+    uid: WebView2Script.HostObjectsSyncRoot.bind_3
+    package: WebView2Script
+    summary: ''
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: >-
+        function bind<T, A0, A1, A2, A, R>(this: (this: T, arg0: A0, arg1: A1,
+        arg2: A2, args: A) => R, thisArg: T, arg0: A0, arg1: A1, arg2: A2):
+        (args: A) => R
+      parameters:
+        - id: this
+          type: '(this: T, arg0: A0, arg1: A1, arg2: A2, args: A) =&gt; R'
+          description: ''
+        - id: thisArg
+          type: T
+          description: ''
+        - id: arg0
+          type: A0
+          description: ''
+        - id: arg1
+          type: A1
+          description: ''
+        - id: arg2
+          type: A2
+          description: ''
+      return:
+        description: ''
+        type: '(args: A) =&gt; R'
+    inheritanceDescription: <b>Inherited From</b> CallableFunction.bind
+  - name: >-
+      bind<T, A0, A1, A2, A3, A, R>((this: T, arg0: A0, arg1: A1, arg2: A2,
+      arg3: A3, args: A) => R, T, A0, A1, A2, A3)
+    uid: WebView2Script.HostObjectsSyncRoot.bind_4
+    package: WebView2Script
+    summary: ''
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: >-
+        function bind<T, A0, A1, A2, A3, A, R>(this: (this: T, arg0: A0, arg1:
+        A1, arg2: A2, arg3: A3, args: A) => R, thisArg: T, arg0: A0, arg1: A1,
+        arg2: A2, arg3: A3): (args: A) => R
+      parameters:
+        - id: this
+          type: '(this: T, arg0: A0, arg1: A1, arg2: A2, arg3: A3, args: A) =&gt; R'
+          description: ''
+        - id: thisArg
+          type: T
+          description: ''
+        - id: arg0
+          type: A0
+          description: ''
+        - id: arg1
+          type: A1
+          description: ''
+        - id: arg2
+          type: A2
+          description: ''
+        - id: arg3
+          type: A3
+          description: ''
+      return:
+        description: ''
+        type: '(args: A) =&gt; R'
+    inheritanceDescription: <b>Inherited From</b> CallableFunction.bind
+  - name: 'bind<T, AX, R>((this: T, args: AX[]) => R, T, AX[])'
+    uid: WebView2Script.HostObjectsSyncRoot.bind_5
+    package: WebView2Script
+    summary: ''
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: >-
+        function bind<T, AX, R>(this: (this: T, args: AX[]) => R, thisArg: T,
+        args: AX[]): (args: AX[]) => R
+      parameters:
+        - id: this
+          type: '(this: T, args: AX[]) =&gt; R'
+          description: ''
+        - id: thisArg
+          type: T
+          description: ''
+        - id: args
+          type: 'AX[]'
+          description: ''
+      return:
+        description: ''
+        type: '(args: AX[]) =&gt; R'
+    inheritanceDescription: <b>Inherited From</b> CallableFunction.bind
+  - name: 'bind<T>(T, ThisParameterType<T>)'
+    uid: WebView2Script.HostObjectsSyncRoot.bind
+    package: WebView2Script
+    summary: >-
+      For a given function, creates a bound function that has the same body as
+      the original function.
+
+      The this object of the bound function is associated with the specified
+      object, and has the specified initial parameters.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: >-
+        function bind<T>(this: T, thisArg: ThisParameterType<T>):
+        OmitThisParameter<T>
+      parameters:
+        - id: this
+          type: T
+          description: ''
+        - id: thisArg
+          type: ThisParameterType&lt;T&gt;
+          description: The object to be used as the this object.
+      return:
+        description: ''
+        type: OmitThisParameter&lt;T&gt;
+    inheritanceDescription: <b>Inherited From</b> CallableFunction.bind
+  - name: 'call<T, A, R>((this: T, args: A) => R, T, A)'
+    uid: WebView2Script.HostObjectsSyncRoot.call
+    package: WebView2Script
+    summary: >-
+      Calls the function with the specified object as the this value and the
+      specified rest arguments as the arguments.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: >-
+        function call<T, A, R>(this: (this: T, args: A) => R, thisArg: T, args:
+        A): R
+      parameters:
+        - id: this
+          type: '(this: T, args: A) =&gt; R'
+          description: ''
+        - id: thisArg
+          type: T
+          description: The object to be used as the this object.
+        - id: args
+          type: A
+          description: |
+            Argument values to be passed to the function.
+      return:
+        description: ''
+        type: R
+    inheritanceDescription: <b>Inherited From</b> CallableFunction.call
+  - name: getHostProperty(string)
+    uid: WebView2Script.HostObjectsSyncRoot.getHostProperty
+    package: WebView2Script
+    summary: >-
+      Perform a property `get` on the host object. Use this method to explicitly
+      force a property `get` to
+
+      occur remotely if a conflicting local method or property exists. For
+      instance, `proxy.toString()`
+
+      runs the local `toString` method on the proxy object. But
+      `proxy.applyHostFunction('toString')` runs
+
+      `toString` on the host proxied object instead.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'function getHostProperty(propertyName: string): any'
+      parameters:
+        - id: propertyName
+          type: string
+          description: String name of the property of which to get the value.
+      return:
+        description: The converted value of the property of the host object's property.
+        type: any
+    inheritanceDescription: >-
+      <b>Inherited From</b>
+      [HostObjectSyncProxy.getHostProperty](xref:WebView2Script.HostObjectSyncProxy.getHostProperty)
+  - name: getLocalProperty(string)
+    uid: WebView2Script.HostObjectsSyncRoot.getLocalProperty
+    package: WebView2Script
+    summary: >-
+      Perform a property `get` locally on the proxy object. Use the methods to
+      force getting
+
+      a property on the host object proxy rather than on the host object it
+      represents.
+
+      For instance, `proxy.unknownProperty` gets the property named
+      `unknownProperty` from
+
+      the host proxied object. But `proxy.getLocalProperty('unknownProperty')`
+      gets the
+
+      value of the property `unknownProperty` on the proxy object.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'function getLocalProperty(propertyName: string): any'
+      parameters:
+        - id: propertyName
+          type: string
+          description: Name of the property to get the value of.
+      return:
+        description: The value of the property.
+        type: any
+    inheritanceDescription: >-
+      <b>Inherited From</b>
+      [HostObjectSyncProxy.getLocalProperty](xref:WebView2Script.HostObjectSyncProxy.getLocalProperty)
+  - name: 'setHostProperty(string, any)'
+    uid: WebView2Script.HostObjectsSyncRoot.setHostProperty
+    package: WebView2Script
+    summary: >-
+      Perform a property `set` on the host object. Use this method to explicitly
+      force a property `set` to occur
+
+      remotely if a conflicting local method or property exists.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'function setHostProperty(propertyName: string, propertyValue: any): any'
+      parameters:
+        - id: propertyName
+          type: string
+          description: Name of the property of which to set the value.
+        - id: propertyValue
+          type: any
+          description: Value to set the property.
+      return:
+        description: The converted value of the property of the host object's property.
+        type: any
+    inheritanceDescription: >-
+      <b>Inherited From</b>
+      [HostObjectSyncProxy.setHostProperty](xref:WebView2Script.HostObjectSyncProxy.setHostProperty)
+  - name: 'setLocalProperty(string, any)'
+    uid: WebView2Script.HostObjectsSyncRoot.setLocalProperty
+    package: WebView2Script
+    summary: >-
+      Perform a property `set` locally on the proxy object. Use the methods to
+      force setting
+
+      a property on the host object proxy rather than on the host object it
+      represents.
+
+      For instance, `proxy.unknownProperty = 2` sets the property named
+      `unknownProperty` on
+
+      the host proxied object. But `proxy.setLocalProperty('unknownProperty',
+      2)` sets the
+
+      value of the property `unknownProperty` on the proxy object.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'function setLocalProperty(propertyName: string, propertyValue: any): any'
+      parameters:
+        - id: propertyName
+          type: string
+          description: Name of the property to get the value of.
+        - id: propertyValue
+          type: any
+          description: Value to set the property to.
+      return:
+        description: The value of the property after it is set.
+        type: any
+    inheritanceDescription: >-
+      <b>Inherited From</b>
+      [HostObjectSyncProxy.setLocalProperty](xref:WebView2Script.HostObjectSyncProxy.setLocalProperty)
+  - name: toString()
+    uid: WebView2Script.HostObjectsSyncRoot.toString
+    package: WebView2Script
+    summary: Returns a string representation of a function.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'function toString(): string'
+      return:
+        description: ''
+        type: string
+    inheritanceDescription: <b>Inherited From</b> Function.toString
+extends: <xref uid="WebView2Script.HostObjectSyncProxy" />

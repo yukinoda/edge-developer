@@ -1,133 +1,408 @@
 ### YamlMime:TSType
 name: SharedBufferReceivedEvent
-uid: 'WebView2Script!SharedBufferReceivedEvent:class'
-package: WebView2Script!
-fullName: SharedBufferReceivedEvent
+uid: WebView2Script.SharedBufferReceivedEvent
+package: WebView2Script
 summary: >-
-  Event object for the `chrome.webview.sharedbufferreceived` event. This event is dispatched when
-  `CoreWebView2.PostSharedBufferToScript` is successfully called.
-remarks: |-
+  Event object for the `chrome.webview.sharedbufferreceived` event. This event
+  is dispatched
 
-  #### Examples
-
-  The following example sends data to script for one-time, read-only consumption.
-
-  First, in the native host app code, set data into the shared memory:
-
-  ```cpp
-  wil::com_ptr<ICoreWebView2ExperimentalEnvironment10> environment;
-  CHECK_FAILURE(
-      m_appWindow->GetWebViewEnvironment()->QueryInterface(IID_PPV_ARGS(&environment)));
-
-  wil::com_ptr<ICoreWebView2ExperimentalSharedBuffer> sharedBuffer;
-  CHECK_FAILURE(environment->CreateSharedBuffer(bufferSize, &sharedBuffer));
-  // Add data to shared memory via IStream.
-  wil::com_ptr<IStream> stream;
-  CHECK_FAILURE(sharedBuffer->OpenStream(&stream));
-  CHECK_FAILURE(stream->Write(data, sizeof(data), nullptr));
-  PCWSTR additionalDataAsJson = L"{\"myBufferType\":\"bufferType1\"}";
-  if (fromFrame)
-  {
-      m_webviewFrame4->PostSharedBufferToScript(
-          sharedBuffer.get(), COREWEBVIEW2_SHARED_BUFFER_ACCESS_READ_ONLY,
-          additionalDataAsJson);
-  }
-  else
-  {
-      m_webView18->PostSharedBufferToScript(
-          sharedBuffer.get(), COREWEBVIEW2_SHARED_BUFFER_ACCESS_READ_ONLY,
-          additionalDataAsJson);
-  }
-  // Close the one-time shared buffer, to release resources.
-  sharedBuffer->Close();
-  ```
-
-  In the HTML document, subscribe to and handle sharedbufferreceived event.
-  
-  Next, in the HTML document, subscribe to and then handle the `sharedbufferreceived` event:
-
-  ```html
-  window.chrome.webview.addEventListener("sharedbufferreceived", e => {
-      SharedBufferReceived(e);});
-  ```
-
-  ```html
-  let readOnlySharedBuffer;
-  function ShowReadOnlySharedBuffer() {
-      if (readOnlySharedBuffer) {
-          DisplaySharedBufferData(readOnlySharedBuffer);
-      } else {
-          // Post a web message to ask host to share the one time read only buffer.
-          chrome.webview.postMessage("RequestOneTimeShareBuffer");
-      }
-  }
-
-  function DisplaySharedBufferData(buffer) {
-      document.getElementById("shared-buffer-data").value =
-          new TextDecoder().decode(new Uint8Array(buffer));
-  }
-
-  function SharedBufferReceived(e) {
-      if (e.additionalData && e.additionalData.myBufferType == "bufferType1") {
-          readOnlySharedBuffer = e.getBuffer();
-      } else {
-          sharedBuffer = e.getBuffer();
-      }
-      DisplaySharedBufferData(e.getBuffer());
-  }
-
-  function ReleaseBuffer(buffer) {
-      window.chrome.webview.releaseBuffer(buffer);
-  }
-  ```
-isPreview: false
+  when `CoreWebView2.PostSharedBufferToScript` is successfully called.
+fullName: SharedBufferReceivedEvent
+remarks: ''
 isDeprecated: false
 type: class
 properties:
   - name: additionalData
-    uid: 'WebView2Script!SharedBufferReceivedEvent#additionalData:member'
-    package: WebView2Script!
-    fullName: additionalData
+    uid: WebView2Script.SharedBufferReceivedEvent.additionalData
+    package: WebView2Script
     summary: >-
-      An object that is the result of parsing the `additionalDataAsJson` parameter to
-      `CoreWebView2.PostSharedBufferToScript` as a JSON string. This property will be `undefined` if
-      `additionalDataAsJson` is `nullptr` or the empty string.
+      An object that is the result of parsing the `additionalDataAsJson`
+      parameter to
+
+      `CoreWebView2.PostSharedBufferToScript` as a JSON string. This property
+      will be `undefined`
+
+      if `additionalDataAsJson` is `nullptr` or the empty string.
+    fullName: additionalData
     remarks: ''
-    isPreview: false
     isDeprecated: false
     syntax:
-      content: 'additionalData: any;'
+      content: 'additionalData: any'
       return:
+        description: ''
         type: any
-  - name: source
-    uid: 'WebView2Script!SharedBufferReceivedEvent#source:member'
-    package: WebView2Script!
-    fullName: source
-    summary: The source of the event is the `chrome.webview` object.
+  - name: Event
+    uid: WebView2Script.SharedBufferReceivedEvent.Event
+    package: WebView2Script
+    summary: ''
+    fullName: Event
     remarks: ''
-    isPreview: false
     isDeprecated: false
     syntax:
-      content: 'source: WebView;'
+      content: >-
+        Event: { , AT_TARGET: number, BUBBLING_PHASE: number, CAPTURING_PHASE:
+        number, NONE: number, prototype: Event }
       return:
-        type: '<xref uid="WebView2Script!WebView:class" />'
+        description: ''
+        type: >-
+          { , AT_TARGET: number, BUBBLING_PHASE: number, CAPTURING_PHASE:
+          number, NONE: number, prototype: Event }
+  - name: source
+    uid: WebView2Script.SharedBufferReceivedEvent.source
+    package: WebView2Script
+    summary: The source of the event is the `chrome.webview` object.
+    fullName: source
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'source: WebView'
+      return:
+        description: ''
+        type: <xref uid="WebView2Script.WebView" />
+inheritedProperties:
+  - name: AT_TARGET
+    uid: WebView2Script.SharedBufferReceivedEvent.AT_TARGET
+    package: WebView2Script
+    summary: ''
+    fullName: AT_TARGET
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'AT_TARGET: number'
+      return:
+        description: ''
+        type: number
+    inheritanceDescription: <b>Inherited From</b> Event.AT_TARGET
+  - name: bubbles
+    uid: WebView2Script.SharedBufferReceivedEvent.bubbles
+    package: WebView2Script
+    summary: >-
+      Returns true or false depending on how event was initialized. True if
+      event goes through its target's ancestors in reverse tree order, and false
+      otherwise.
+    fullName: bubbles
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'bubbles: boolean'
+      return:
+        description: ''
+        type: boolean
+    inheritanceDescription: <b>Inherited From</b> Event.bubbles
+  - name: BUBBLING_PHASE
+    uid: WebView2Script.SharedBufferReceivedEvent.BUBBLING_PHASE
+    package: WebView2Script
+    summary: ''
+    fullName: BUBBLING_PHASE
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'BUBBLING_PHASE: number'
+      return:
+        description: ''
+        type: number
+    inheritanceDescription: <b>Inherited From</b> Event.BUBBLING_PHASE
+  - name: cancelable
+    uid: WebView2Script.SharedBufferReceivedEvent.cancelable
+    package: WebView2Script
+    summary: >-
+      Returns true or false depending on how event was initialized. Its return
+      value does not always carry meaning, but true can indicate that part of
+      the operation during which event was dispatched, can be canceled by
+      invoking the preventDefault() method.
+    fullName: cancelable
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'cancelable: boolean'
+      return:
+        description: ''
+        type: boolean
+    inheritanceDescription: <b>Inherited From</b> Event.cancelable
+  - name: cancelBubble
+    uid: WebView2Script.SharedBufferReceivedEvent.cancelBubble
+    package: WebView2Script
+    summary: ''
+    fullName: cancelBubble
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'cancelBubble: boolean'
+      return:
+        description: ''
+        type: boolean
+    inheritanceDescription: <b>Inherited From</b> Event.cancelBubble
+  - name: CAPTURING_PHASE
+    uid: WebView2Script.SharedBufferReceivedEvent.CAPTURING_PHASE
+    package: WebView2Script
+    summary: ''
+    fullName: CAPTURING_PHASE
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'CAPTURING_PHASE: number'
+      return:
+        description: ''
+        type: number
+    inheritanceDescription: <b>Inherited From</b> Event.CAPTURING_PHASE
+  - name: composed
+    uid: WebView2Script.SharedBufferReceivedEvent.composed
+    package: WebView2Script
+    summary: >-
+      Returns true or false depending on how event was initialized. True if
+      event invokes listeners past a ShadowRoot node that is the root of its
+      target, and false otherwise.
+    fullName: composed
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'composed: boolean'
+      return:
+        description: ''
+        type: boolean
+    inheritanceDescription: <b>Inherited From</b> Event.composed
+  - name: currentTarget
+    uid: WebView2Script.SharedBufferReceivedEvent.currentTarget
+    package: WebView2Script
+    summary: >-
+      Returns the object whose event listener's callback is currently being
+      invoked.
+    fullName: currentTarget
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'currentTarget: EventTarget | null'
+      return:
+        description: ''
+        type: EventTarget | null
+    inheritanceDescription: <b>Inherited From</b> Event.currentTarget
+  - name: defaultPrevented
+    uid: WebView2Script.SharedBufferReceivedEvent.defaultPrevented
+    package: WebView2Script
+    summary: >-
+      Returns true if preventDefault() was invoked successfully to indicate
+      cancelation, and false otherwise.
+    fullName: defaultPrevented
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'defaultPrevented: boolean'
+      return:
+        description: ''
+        type: boolean
+    inheritanceDescription: <b>Inherited From</b> Event.defaultPrevented
+  - name: eventPhase
+    uid: WebView2Script.SharedBufferReceivedEvent.eventPhase
+    package: WebView2Script
+    summary: >-
+      Returns the event's phase, which is one of NONE, CAPTURING_PHASE,
+      AT_TARGET, and BUBBLING_PHASE.
+    fullName: eventPhase
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'eventPhase: number'
+      return:
+        description: ''
+        type: number
+    inheritanceDescription: <b>Inherited From</b> Event.eventPhase
+  - name: isTrusted
+    uid: WebView2Script.SharedBufferReceivedEvent.isTrusted
+    package: WebView2Script
+    summary: >-
+      Returns true if event was dispatched by the user agent, and false
+      otherwise.
+    fullName: isTrusted
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'isTrusted: boolean'
+      return:
+        description: ''
+        type: boolean
+    inheritanceDescription: <b>Inherited From</b> Event.isTrusted
+  - name: NONE
+    uid: WebView2Script.SharedBufferReceivedEvent.NONE
+    package: WebView2Script
+    summary: ''
+    fullName: NONE
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'NONE: number'
+      return:
+        description: ''
+        type: number
+    inheritanceDescription: <b>Inherited From</b> Event.NONE
+  - name: returnValue
+    uid: WebView2Script.SharedBufferReceivedEvent.returnValue
+    package: WebView2Script
+    summary: ''
+    fullName: returnValue
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'returnValue: boolean'
+      return:
+        description: ''
+        type: boolean
+    inheritanceDescription: <b>Inherited From</b> Event.returnValue
+  - name: srcElement
+    uid: WebView2Script.SharedBufferReceivedEvent.srcElement
+    package: WebView2Script
+    summary: ''
+    fullName: srcElement
+    remarks: ''
+    isDeprecated: true
+    customDeprecatedMessage: ''
+    syntax:
+      content: 'srcElement: EventTarget | null'
+      return:
+        description: ''
+        type: EventTarget | null
+    inheritanceDescription: <b>Inherited From</b> Event.srcElement
+  - name: target
+    uid: WebView2Script.SharedBufferReceivedEvent.target
+    package: WebView2Script
+    summary: Returns the object to which event is dispatched (its target).
+    fullName: target
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'target: EventTarget | null'
+      return:
+        description: ''
+        type: EventTarget | null
+    inheritanceDescription: <b>Inherited From</b> Event.target
+  - name: timeStamp
+    uid: WebView2Script.SharedBufferReceivedEvent.timeStamp
+    package: WebView2Script
+    summary: >-
+      Returns the event's timestamp as the number of milliseconds measured
+      relative to the time origin.
+    fullName: timeStamp
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'timeStamp: number'
+      return:
+        description: ''
+        type: number
+    inheritanceDescription: <b>Inherited From</b> Event.timeStamp
+  - name: type
+    uid: WebView2Script.SharedBufferReceivedEvent.type
+    package: WebView2Script
+    summary: 'Returns the type of event, e.g. "click", "hashchange", or "submit".'
+    fullName: type
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'type: string'
+      return:
+        description: ''
+        type: string
+    inheritanceDescription: <b>Inherited From</b> Event.type
+inheritedMethods:
+  - name: composedPath()
+    uid: WebView2Script.SharedBufferReceivedEvent.composedPath
+    package: WebView2Script
+    summary: >-
+      Returns the invocation target objects of event's path (objects on which
+      listeners will be invoked), except for any nodes in shadow trees of which
+      the shadow root's mode is "closed" that are not reachable from event's
+      currentTarget.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: 'function composedPath(): EventTarget[]'
+      return:
+        description: ''
+        type: 'EventTarget[]'
+    inheritanceDescription: <b>Inherited From</b> Event.composedPath
+  - name: 'initEvent(string, boolean, boolean)'
+    uid: WebView2Script.SharedBufferReceivedEvent.initEvent
+    package: WebView2Script
+    summary: ''
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: >-
+        function initEvent(type: string, bubbles?: boolean, cancelable?:
+        boolean)
+      parameters:
+        - id: type
+          type: string
+          description: ''
+        - id: bubbles
+          type: boolean
+          description: ''
+        - id: cancelable
+          type: boolean
+          description: ''
+    inheritanceDescription: <b>Inherited From</b> Event.initEvent
+  - name: preventDefault()
+    uid: WebView2Script.SharedBufferReceivedEvent.preventDefault
+    package: WebView2Script
+    summary: >-
+      If invoked when the cancelable attribute value is true, and while
+      executing a listener for the event with passive set to false, signals to
+      the operation that caused event to be dispatched that it needs to be
+      canceled.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: function preventDefault()
+    inheritanceDescription: <b>Inherited From</b> Event.preventDefault
+  - name: stopImmediatePropagation()
+    uid: WebView2Script.SharedBufferReceivedEvent.stopImmediatePropagation
+    package: WebView2Script
+    summary: >-
+      Invoking this method prevents event from reaching any registered event
+      listeners after the current one finishes running and, when dispatched in a
+      tree, also prevents event from reaching any other objects.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: function stopImmediatePropagation()
+    inheritanceDescription: <b>Inherited From</b> Event.stopImmediatePropagation
+  - name: stopPropagation()
+    uid: WebView2Script.SharedBufferReceivedEvent.stopPropagation
+    package: WebView2Script
+    summary: >-
+      When dispatched in a tree, invoking this method prevents event from
+      reaching any objects other than the current object.
+    remarks: ''
+    isDeprecated: false
+    syntax:
+      content: function stopPropagation()
+    inheritanceDescription: <b>Inherited From</b> Event.stopPropagation
 methods:
   - name: getBuffer()
-    uid: 'WebView2Script!SharedBufferReceivedEvent#getBuffer:member(1)'
-    package: WebView2Script!
-    fullName: getBuffer()
+    uid: WebView2Script.SharedBufferReceivedEvent.getBuffer
+    package: WebView2Script
     summary: >-
-      Returns an `ArrayBuffer` object with the backing content from the shared buffer passed to
-      `CoreWebView2.PostSharedBufferToScript`<!-- -->. If `CoreWebView2.PostSharedBufferToScript` was called with the
-      buffer set to `ReadOnly`<!-- -->, then only read access is allowed to the buffer. If you try to modify the content
-      in a read-only buffer, it will cause an access violation in the WebView renderer process and crash the renderer
-      process.
+      Returns an `ArrayBuffer` object with the backing content from the shared
+      buffer passed
+
+      to `CoreWebView2.PostSharedBufferToScript`.
+
+      If `CoreWebView2.PostSharedBufferToScript` was called with the buffer set
+      to `ReadOnly`,
+
+      then only read access is allowed to the buffer. If you try to modify the
+      content in a
+
+      read-only buffer, it will cause an access violation in the WebView
+      renderer process and
+
+      crash the renderer process.
     remarks: ''
-    isPreview: false
     isDeprecated: false
     syntax:
-      content: 'getBuffer(): ArrayBuffer;'
+      content: 'function getBuffer(): ArrayBuffer'
       return:
+        description: >-
+          An `ArrayBuffer` over the shared buffer passed to
+          `CoreWebView2.PostSharedBufferToScript`.
         type: ArrayBuffer
-        description: An `ArrayBuffer` over the shared buffer passed to `CoreWebView2.PostSharedBufferToScript`.
-extends: <a href="https://developer.mozilla.org/docs/Web/API/Event">Event</a>
+extends: Event

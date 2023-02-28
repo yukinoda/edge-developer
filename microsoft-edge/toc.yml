@@ -1415,25 +1415,25 @@
                   displayName: functions, methods
 
             - name: JavaScript
-              uid: WebView2Script!
+              uid: WebView2Script
               displayName: 
               items:
                 - name: HostObjectAsyncProxy
-                  uid: 'WebView2Script!HostObjectAsyncProxy:class'
+                  uid: 'WebView2Script.HostObjectAsyncProxy'
                 - name: HostObjectAsyncProxyBase
-                  uid: 'WebView2Script!HostObjectAsyncProxyBase:class'
+                  uid: 'WebView2Script.HostObjectAsyncProxyBase'
                 - name: HostObjectsAsyncRoot
-                  uid: 'WebView2Script!HostObjectsAsyncRoot:class'
+                  uid: 'WebView2Script.HostObjectsAsyncRoot'
                 - name: HostObjectsOptions
-                  uid: 'WebView2Script!HostObjectsOptions:class'
+                  uid: 'WebView2Script.HostObjectsOptions'
                 - name: HostObjectsSyncRoot
-                  uid: 'WebView2Script!HostObjectsSyncRoot:class'
+                  uid: 'WebView2Script.HostObjectsSyncRoot'
                 - name: HostObjectSyncProxy
-                  uid: 'WebView2Script!HostObjectSyncProxy:class'
+                  uid: 'WebView2Script.HostObjectSyncProxy'
                 - name: SharedBufferReceivedEvent
-                  uid: 'WebView2Script!SharedBufferReceivedEvent:class'
+                  uid: 'WebView2Script.SharedBufferReceivedEvent'
                 - name: WebView
-                  uid: 'WebView2Script!WebView:class'
+                  uid: 'WebView2Script.WebView'
 
         - name: Contact the WebView2 Team
           href: webview2/contact.md
